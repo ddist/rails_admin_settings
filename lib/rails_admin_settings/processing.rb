@@ -32,7 +32,7 @@ module RailsAdminSettings
     def value
       if upload_kind?
         if file?
-          file.url
+          {front: file.front.url, mobile: file.mobile.url}
         else
           nil
         end
@@ -192,7 +192,7 @@ module RailsAdminSettings
       elsif phones_kind?
         load_phones
       elsif file_kind?
-        file.url
+        file
       else
         puts "[rails_admin_settings] Unknown field kind: #{kind}"
         nil
